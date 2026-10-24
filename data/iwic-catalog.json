@@ -1,0 +1,649 @@
+[
+  {
+    "id": "IWIC-001",
+    "title": "Fox River Reach 4 HEC-RAS 2D Hydraulic Model (Millhurst Dam to Oswego Bridge)",
+    "title_es": "Modelo hidráulico HEC-RAS 2D del río Fox, tramo 4 (presa Millhurst a puente Oswego)",
+    "type": "Model",
+    "category": "Hydraulic Studies",
+    "organization": "IDNR-OWR",
+    "group": "Flooding & Hydraulics",
+    "formats": [
+      "HEC-RAS",
+      "GeoJSON"
+    ],
+    "spatial_coverage": "Kendall & Kane Counties",
+    "watershed_huc8": "07120007",
+    "updated_date": "2026-02-20",
+    "views_recent": 5663,
+    "summary": "Two-dimensional unsteady flow model with calibrated 100-year water surface profiles and inundation extents.",
+    "summary_es": "Modelo bidimensional de flujo no permanente con perfiles calibrados de la superficie del agua a 100 años y zonas de inundación.",
+    "contact_role": "Hydraulic Engineer",
+    "synthetic_metrics": {
+      "record_count": 244969,
+      "completeness_pct": 74.1,
+      "update_frequency": "Monthly",
+      "quality_score": 3.3
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-002",
+    "title": "Lake Michigan Water Allocation & Non-Revenue Water Loss Annual Report (200+ Allocatees)",
+    "title_es": "Informe anual de asignación de agua del lago Míchigan y pérdida de agua no facturada (más de 200 asignatarios)",
+    "type": "Dataset",
+    "category": "Public Water Use/Consumption Data",
+    "organization": "IDNR-OWR",
+    "group": "Water Supply & Loss",
+    "formats": [
+      "XLSX",
+      "CSV",
+      "PDF"
+    ],
+    "spatial_coverage": "Northeastern Illinois",
+    "watershed_huc8": "04040002",
+    "updated_date": "2026-02-14",
+    "views_recent": 8478,
+    "summary": "Annual allocation, pumpage and water-audit results for Lake Michigan allocatees, flagging loss above 10%.",
+    "summary_es": "Asignación anual, bombeo y resultados de auditoría de agua de los asignatarios del lago Míchigan, con pérdidas superiores al 10%.",
+    "contact_role": "Water Allocation Program Manager",
+    "synthetic_metrics": {
+      "record_count": 64809,
+      "completeness_pct": 84.5,
+      "update_frequency": "Event-based",
+      "quality_score": 3.1
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-003",
+    "title": "Mahomet Aquifer Observation Well Network & Drought Preparedness Index",
+    "title_es": "Red de pozos de observación del acuífero Mahomet e índice de preparación ante sequías",
+    "type": "Dataset",
+    "category": "Groundwater and Well Data",
+    "organization": "ISWS / PRI",
+    "group": "Groundwater & Drought",
+    "formats": [
+      "CSV",
+      "GeoJSON"
+    ],
+    "spatial_coverage": "Champaign, Piatt, McLean, Mason Counties",
+    "watershed_huc8": "07130006",
+    "updated_date": "2026-06-24",
+    "views_recent": 5126,
+    "summary": "Monthly water-level records from observation wells combined with a composite drought preparedness index.",
+    "summary_es": "Registros mensuales de niveles de agua en pozos de observación combinados con un índice compuesto de preparación ante sequías.",
+    "contact_role": "Groundwater Hydrologist",
+    "synthetic_metrics": {
+      "record_count": 39942,
+      "completeness_pct": 90.7,
+      "update_frequency": "Annual",
+      "quality_score": 4.3
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-004",
+    "title": "Illinois Structure Address Flood Risk (SAFR) & NFIP LOMR/LOMA Repository",
+    "title_es": "Repositorio de riesgo de inundación por dirección de estructuras (SAFR) y LOMR/LOMA del NFIP",
+    "type": "Dataset",
+    "category": "NFIP Letters of Map Revisions",
+    "organization": "FEMA Region 5",
+    "group": "Hazard Mitigation",
+    "formats": [
+      "CSV",
+      "PDF",
+      "GeoJSON"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07120004",
+    "updated_date": "2026-06-13",
+    "views_recent": 2821,
+    "summary": "Structure-level flood risk attributes linked to letters of map change for the National Flood Insurance Program.",
+    "summary_es": "Atributos de riesgo de inundación por estructura vinculados a cartas de cambio de mapa del Programa Nacional de Seguro contra Inundaciones.",
+    "contact_role": "Floodplain Mapping Coordinator",
+    "synthetic_metrics": {
+      "record_count": 175139,
+      "completeness_pct": 85.7,
+      "update_frequency": "Monthly",
+      "quality_score": 3.4
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-005",
+    "title": "Illinois Waterway Port & Levee Accreditation Database (Peoria to Cairo)",
+    "title_es": "Base de datos de puertos y acreditación de diques de la vía fluvial de Illinois (Peoria a Cairo)",
+    "type": "Dataset",
+    "category": "Levee Database Information",
+    "organization": "USACE Rock Island",
+    "group": "Infrastructure & Navigation",
+    "formats": [
+      "GeoJSON",
+      "XLSX"
+    ],
+    "spatial_coverage": "Peoria to Cairo",
+    "watershed_huc8": "07130001",
+    "updated_date": "2026-06-18",
+    "views_recent": 9296,
+    "summary": "Inventory of river ports and levee systems with accreditation, inspection ratings and rehabilitation needs.",
+    "summary_es": "Inventario de puertos fluviales y sistemas de diques con acreditación, calificaciones de inspección y necesidades de rehabilitación.",
+    "contact_role": "Levee Safety Program Lead",
+    "synthetic_metrics": {
+      "record_count": 173393,
+      "completeness_pct": 80.1,
+      "update_frequency": "Annual",
+      "quality_score": 4.9
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-006",
+    "title": "Bulletin 75 Updated Illinois Precipitation Frequency Estimates",
+    "title_es": "Estimaciones actualizadas de frecuencia de precipitación de Illinois (Boletín 75)",
+    "type": "Dataset",
+    "category": "Updated rainfall information",
+    "organization": "ISWS / PRI",
+    "group": "Flooding & Hydraulics",
+    "formats": [
+      "CSV",
+      "PDF"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07120001",
+    "updated_date": "2026-05-06",
+    "views_recent": 7660,
+    "summary": "Updated rainfall depth-duration-frequency estimates with confidence intervals for design and floodplain studies.",
+    "summary_es": "Estimaciones actualizadas de profundidad-duración-frecuencia de lluvia con intervalos de confianza para diseño y estudios de planicies de inundación.",
+    "contact_role": "State Climatologist Office",
+    "synthetic_metrics": {
+      "record_count": 181673,
+      "completeness_pct": 76,
+      "update_frequency": "Annual",
+      "quality_score": 3.9
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-007",
+    "title": "Des Plaines River Riverside Hydraulic Bridge Model Suite",
+    "title_es": "Conjunto de modelos hidráulicos de puentes del río Des Plaines en Riverside",
+    "type": "Model",
+    "category": "Hydraulic Studies",
+    "organization": "USACE Chicago",
+    "group": "Flooding & Hydraulics",
+    "formats": [
+      "HEC-RAS"
+    ],
+    "spatial_coverage": "Cook County",
+    "watershed_huc8": "07120004",
+    "updated_date": "2026-02-27",
+    "views_recent": 4534,
+    "summary": "Steady-flow bridge and culvert models supporting urban flood control planning.",
+    "summary_es": "Modelos de flujo permanente de puentes y alcantarillas para la planificación del control de inundaciones urbanas.",
+    "contact_role": "Hydraulic Engineer",
+    "synthetic_metrics": {
+      "record_count": 48161,
+      "completeness_pct": 97.9,
+      "update_frequency": "Monthly",
+      "quality_score": 3.2
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-008",
+    "title": "Illinois Streamgage & Historical Flood Assessment Reports",
+    "title_es": "Red de estaciones de aforo e información de niveles en tiempo real de Illinois",
+    "type": "Dataset",
+    "category": "Historical Flood Assessment Reports",
+    "organization": "USGS",
+    "group": "Flooding & Hydraulics",
+    "formats": [
+      "CSV",
+      "GeoJSON"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07130011",
+    "updated_date": "2026-04-22",
+    "views_recent": 9082,
+    "summary": "Continuous stage and discharge from stream gages with flood-stage thresholds.",
+    "summary_es": "Nivel y caudal continuos de estaciones de aforo con umbrales de nivel de inundación.",
+    "contact_role": "Hydrologic Technician",
+    "synthetic_metrics": {
+      "record_count": 233806,
+      "completeness_pct": 90.3,
+      "update_frequency": "Annual",
+      "quality_score": 5
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-009",
+    "title": "Illinois Community Water Supply Water-Loss Dashboard",
+    "title_es": "Panel de pérdida de agua de los sistemas comunitarios de agua potable de Illinois",
+    "type": "Application",
+    "category": "Public Water Use/Consumption Data",
+    "organization": "IEPA",
+    "group": "Water Supply & Loss",
+    "formats": [
+      "CSV"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07130011",
+    "updated_date": "2026-02-26",
+    "views_recent": 9028,
+    "summary": "Interactive view of system-level water loss, audits and Water System Improvement Plan status.",
+    "summary_es": "Vista interactiva de pérdidas de agua por sistema, auditorías y estado del Plan de Mejoras del Sistema de Agua.",
+    "contact_role": "Public Water Supply Analyst",
+    "synthetic_metrics": {
+      "record_count": 248949,
+      "completeness_pct": 83.8,
+      "update_frequency": "Daily",
+      "quality_score": 4.7
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-010",
+    "title": "Lead Service Line Inventory Statewide Tracker",
+    "title_es": "Seguimiento estatal del inventario de líneas de servicio de plomo",
+    "type": "Dataset",
+    "category": "Water Infrastructure Systems Mapping",
+    "organization": "IEPA",
+    "group": "Water Supply & Loss",
+    "formats": [
+      "CSV",
+      "XLSX"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07120003",
+    "updated_date": "2026-01-02",
+    "views_recent": 251,
+    "summary": "Municipal lead service line inventories with replacement progress and funding eligibility.",
+    "summary_es": "Inventarios municipales de líneas de servicio de plomo con avance de reemplazo y elegibilidad de financiamiento.",
+    "contact_role": "Lead Program Coordinator",
+    "synthetic_metrics": {
+      "record_count": 187411,
+      "completeness_pct": 93.9,
+      "update_frequency": "Annual",
+      "quality_score": 4.9
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-011",
+    "title": "State Revolving Fund Intended Use Plan Priority List",
+    "title_es": "Lista de prioridades del Plan de Uso Previsto del Fondo Rotatorio Estatal",
+    "type": "Plan",
+    "category": "Water Infrastructure Systems Mapping",
+    "organization": "IEPA",
+    "group": "Water Supply & Loss",
+    "formats": [
+      "PDF",
+      "XLSX"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07130011",
+    "updated_date": "2026-07-11",
+    "views_recent": 5215,
+    "summary": "Ranked drinking water and clean water projects with priority points and disadvantaged community flags.",
+    "summary_es": "Proyectos de agua potable y saneamiento clasificados con puntos de prioridad e indicadores de comunidades desfavorecidas.",
+    "contact_role": "SRF Program Manager",
+    "synthetic_metrics": {
+      "record_count": 179458,
+      "completeness_pct": 86.8,
+      "update_frequency": "Monthly",
+      "quality_score": 4
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-012",
+    "title": "Illinois Drought Monitor & Water Supply Outlook",
+    "title_es": "Monitor de sequía y perspectiva de suministro de agua de Illinois",
+    "type": "Application",
+    "category": "Drought Preparedness Information",
+    "organization": "ISWS / PRI",
+    "group": "Groundwater & Drought",
+    "formats": [
+      "CSV",
+      "GeoJSON"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07130006",
+    "updated_date": "2026-05-22",
+    "views_recent": 4912,
+    "summary": "Weekly drought severity, reservoir storage and aquifer stress indicators.",
+    "summary_es": "Severidad semanal de sequía, almacenamiento de embalses e indicadores de estrés de acuíferos.",
+    "contact_role": "Climatologist",
+    "synthetic_metrics": {
+      "record_count": 228542,
+      "completeness_pct": 95.1,
+      "update_frequency": "Monthly",
+      "quality_score": 4.2
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-013",
+    "title": "Regional Water Supply Planning Area Demand Projections",
+    "title_es": "Proyecciones de demanda de las áreas regionales de planificación de suministro de agua",
+    "type": "Plan",
+    "category": "Drought Preparedness Information",
+    "organization": "ISWS / PRI",
+    "group": "Groundwater & Drought",
+    "formats": [
+      "PDF",
+      "XLSX"
+    ],
+    "spatial_coverage": "Regional Planning Areas",
+    "watershed_huc8": "07130006",
+    "updated_date": "2026-04-26",
+    "views_recent": 6383,
+    "summary": "Projected 2060 demand and supply scenarios for Illinois regional water supply planning areas.",
+    "summary_es": "Proyecciones de demanda y escenarios de suministro a 2060 para las áreas regionales de planificación de agua de Illinois.",
+    "contact_role": "Water Supply Planner",
+    "synthetic_metrics": {
+      "record_count": 181746,
+      "completeness_pct": 83.8,
+      "update_frequency": "Monthly",
+      "quality_score": 4
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-014",
+    "title": "Kaskaskia River Carlyle Lake Operations & Release Model",
+    "title_es": "Modelo de operaciones y descargas del lago Carlyle, río Kaskaskia",
+    "type": "Model",
+    "category": "Hydraulic Studies",
+    "organization": "USACE Chicago",
+    "group": "Flooding & Hydraulics",
+    "formats": [
+      "HEC-ResSim",
+      "CSV"
+    ],
+    "spatial_coverage": "Clinton County",
+    "watershed_huc8": "07140204",
+    "updated_date": "2026-04-20",
+    "views_recent": 2953,
+    "summary": "Reservoir operations model supporting flood storage and downstream release decisions.",
+    "summary_es": "Modelo de operación de embalse que apoya decisiones de almacenamiento de inundaciones y descargas aguas abajo.",
+    "contact_role": "Reservoir Operations Engineer",
+    "synthetic_metrics": {
+      "record_count": 109148,
+      "completeness_pct": 75.3,
+      "update_frequency": "Annual",
+      "quality_score": 3.3
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-015",
+    "title": "Illinois Urban Flood Susceptibility Index",
+    "title_es": "Índice de susceptibilidad a inundaciones urbanas de Illinois",
+    "type": "Dataset",
+    "category": "Regulatory Floodplain Inundation and Floodway Mapping",
+    "organization": "ISWS / PRI",
+    "group": "Flooding & Hydraulics",
+    "formats": [
+      "GeoJSON",
+      "CSV"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07120004",
+    "updated_date": "2026-08-26",
+    "views_recent": 9423,
+    "summary": "Block-group scale index of urban flooding susceptibility blending claims, imperviousness and drainage data.",
+    "summary_es": "Índice a escala de grupo de bloques de susceptibilidad a inundaciones urbanas que combina reclamos, impermeabilidad y drenaje.",
+    "contact_role": "Urban Flooding Specialist",
+    "synthetic_metrics": {
+      "record_count": 195388,
+      "completeness_pct": 84.5,
+      "update_frequency": "Daily",
+      "quality_score": 3.2
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-016",
+    "title": "Hazard Mitigation Grant Program Project Tracker",
+    "title_es": "Seguimiento de proyectos del Programa de Subvenciones para Mitigación de Riesgos",
+    "type": "Application",
+    "category": "Flood Mitigation and Flood Preparedness Information",
+    "organization": "IEMA",
+    "group": "Hazard Mitigation",
+    "formats": [
+      "CSV",
+      "XLSX"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07130011",
+    "updated_date": "2026-06-01",
+    "views_recent": 6629,
+    "summary": "Status of HMGP and BRIC subapplications by county, hazard type and funding stage.",
+    "summary_es": "Estado de las subsolicitudes de HMGP y BRIC por condado, tipo de peligro y etapa de financiamiento.",
+    "contact_role": "Mitigation Grants Officer",
+    "synthetic_metrics": {
+      "record_count": 92475,
+      "completeness_pct": 75.8,
+      "update_frequency": "Daily",
+      "quality_score": 3.4
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-017",
+    "title": "Illinois State Hazard Mitigation Plan Flood Annex",
+    "title_es": "Anexo de inundaciones del Plan estatal de mitigación de riesgos de Illinois",
+    "type": "Plan",
+    "category": "County and Community Hazard Mitigation Plans",
+    "organization": "IEMA",
+    "group": "Hazard Mitigation",
+    "formats": [
+      "PDF"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07130011",
+    "updated_date": "2026-05-11",
+    "views_recent": 979,
+    "summary": "Flood hazard profiles, vulnerability findings and mitigation actions for state planning.",
+    "summary_es": "Perfiles de riesgo de inundación, hallazgos de vulnerabilidad y acciones de mitigación para la planificación estatal.",
+    "contact_role": "State Hazard Mitigation Officer",
+    "synthetic_metrics": {
+      "record_count": 61788,
+      "completeness_pct": 72.2,
+      "update_frequency": "Annual",
+      "quality_score": 3.8
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-018",
+    "title": "Rock River Moline Floodway & Bridge Hydraulic Studies",
+    "title_es": "Estudios hidráulicos de cauce de inundación y puentes del río Rock en Moline",
+    "type": "Model",
+    "category": "Hydraulic Studies",
+    "organization": "USACE Rock Island",
+    "group": "Flooding & Hydraulics",
+    "formats": [
+      "HEC-RAS",
+      "PDF"
+    ],
+    "spatial_coverage": "Rock Island County",
+    "watershed_huc8": "07090005",
+    "updated_date": "2026-03-23",
+    "views_recent": 8319,
+    "summary": "Hydraulic studies for floodway delineation and bridge scour assessments.",
+    "summary_es": "Estudios hidráulicos para delimitación de cauces de inundación y evaluación de socavación en puentes.",
+    "contact_role": "Hydraulic Engineer",
+    "synthetic_metrics": {
+      "record_count": 164826,
+      "completeness_pct": 77.9,
+      "update_frequency": "Annual",
+      "quality_score": 4.4
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-019",
+    "title": "Illinois River Navigation Lock & Dam Condition Assessment",
+    "title_es": "Evaluación de condición de esclusas y presas de navegación del río Illinois",
+    "type": "Dataset",
+    "category": "Port and Navigation Information",
+    "organization": "USACE Rock Island",
+    "group": "Infrastructure & Navigation",
+    "formats": [
+      "XLSX",
+      "PDF"
+    ],
+    "spatial_coverage": "Illinois Waterway",
+    "watershed_huc8": "07130001",
+    "updated_date": "2026-04-08",
+    "views_recent": 2958,
+    "summary": "Condition ratings, outage history and rehabilitation schedule for Illinois Waterway locks.",
+    "summary_es": "Calificaciones de condición, historial de interrupciones y calendario de rehabilitación de las esclusas de la vía fluvial de Illinois.",
+    "contact_role": "Navigation Project Manager",
+    "synthetic_metrics": {
+      "record_count": 89620,
+      "completeness_pct": 76.8,
+      "update_frequency": "Monthly",
+      "quality_score": 3.1
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-020",
+    "title": "Community Development Block Grant Water Infrastructure Awards",
+    "title_es": "Adjudicaciones de infraestructura de agua del Programa de Subvenciones en Bloque para el Desarrollo Comunitario",
+    "type": "Dataset",
+    "category": "Water Infrastructure Systems Mapping",
+    "organization": "IDCEO",
+    "group": "Water Supply & Loss",
+    "formats": [
+      "CSV",
+      "XLSX"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07130011",
+    "updated_date": "2026-04-08",
+    "views_recent": 536,
+    "summary": "Public infrastructure awards for water and sewer projects in low- and moderate-income communities.",
+    "summary_es": "Adjudicaciones de infraestructura pública para proyectos de agua y alcantarillado en comunidades de ingresos bajos y moderados.",
+    "contact_role": "CDBG Program Officer",
+    "synthetic_metrics": {
+      "record_count": 45999,
+      "completeness_pct": 87,
+      "update_frequency": "Monthly",
+      "quality_score": 3.3
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-021",
+    "title": "Conservation Practices Cost-Share & Nutrient Reduction Tracker",
+    "title_es": "Seguimiento de prácticas de conservación con costos compartidos y reducción de nutrientes",
+    "type": "Application",
+    "category": "Drought Preparedness Information",
+    "organization": "IDNR-OWR",
+    "group": "Groundwater & Drought",
+    "formats": [
+      "CSV",
+      "GeoJSON"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07130011",
+    "updated_date": "2026-08-17",
+    "views_recent": 7379,
+    "summary": "Practice-level cost-share, acres treated and modeled nutrient reductions by watershed.",
+    "summary_es": "Costos compartidos por práctica, acres tratados y reducciones modeladas de nutrientes por cuenca.",
+    "contact_role": "Conservation Program Specialist",
+    "synthetic_metrics": {
+      "record_count": 210788,
+      "completeness_pct": 73.9,
+      "update_frequency": "Monthly",
+      "quality_score": 4
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-022",
+    "title": "Illinois Surface Water Quality & Wastewater Discharge Monitoring",
+    "title_es": "Monitoreo de calidad del agua superficial y descargas de aguas residuales de Illinois",
+    "type": "Dataset",
+    "category": "GIS Meta Data",
+    "organization": "IEPA",
+    "group": "Infrastructure & Navigation",
+    "formats": [
+      "CSV"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07130011",
+    "updated_date": "2026-07-21",
+    "views_recent": 9720,
+    "summary": "Ambient stream monitoring and permitted discharge results with impairment status.",
+    "summary_es": "Monitoreo ambiental de arroyos y resultados de descargas permitidas con estado de deterioro.",
+    "contact_role": "Water Quality Analyst",
+    "synthetic_metrics": {
+      "record_count": 122288,
+      "completeness_pct": 74.3,
+      "update_frequency": "Annual",
+      "quality_score": 3.8
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-023",
+    "title": "Illinois NFIP Letters of Map Amendment (LOMA) Repository",
+    "title_es": "Repositorio de cartas de modificación de mapa (LOMA) del NFIP de Illinois",
+    "type": "Dataset",
+    "category": "NFIP Letters of Map Amendment",
+    "organization": "FEMA Region 5",
+    "group": "Hazard Mitigation",
+    "formats": [
+      "CSV",
+      "GeoJSON",
+      "PDF"
+    ],
+    "spatial_coverage": "Statewide",
+    "watershed_huc8": "07130011",
+    "updated_date": "2026-03-09",
+    "views_recent": 3247,
+    "summary": "Synthetic index of Illinois LOMA cases, communities and map amendment status.",
+    "summary_es": "Índice sintético de casos LOMA de Illinois, comunidades y estado de modificación de mapas.",
+    "contact_role": "Floodplain Mapping Coordinator",
+    "synthetic_metrics": {
+      "record_count": 114998,
+      "completeness_pct": 97.2,
+      "update_frequency": "Event-based",
+      "quality_score": 3
+    },
+    "is_synthetic": true
+  },
+  {
+    "id": "IWIC-024",
+    "title": "Cache River & Cairo Levee Interior Drainage Model",
+    "title_es": "Modelo de drenaje interior del río Cache y el dique de Cairo",
+    "type": "Model",
+    "category": "Flood Damage Assessment Information via SAFR",
+    "organization": "USACE Chicago",
+    "group": "Infrastructure & Navigation",
+    "formats": [
+      "HEC-HMS",
+      "HEC-RAS"
+    ],
+    "spatial_coverage": "Alexander County",
+    "watershed_huc8": "07140108",
+    "updated_date": "2026-07-13",
+    "views_recent": 7158,
+    "summary": "Interior drainage and pumping model supporting levee certification and flood response.",
+    "summary_es": "Modelo de drenaje interior y bombeo que apoya la certificación de diques y la respuesta a inundaciones.",
+    "contact_role": "Levee Safety Engineer",
+    "synthetic_metrics": {
+      "record_count": 78913,
+      "completeness_pct": 88.8,
+      "update_frequency": "Annual",
+      "quality_score": 4.8
+    },
+    "is_synthetic": true
+  }
+]
