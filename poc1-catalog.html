@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IWIC PoC 1 · Unified Data, Model &amp; Application Catalog</title>
+  <meta name="description" content="Search the synthetic IWIC catalog of datasets, models and applications organized by State Water Plan Figure 7.3 categories.">
+  <link rel="stylesheet" href="css/illinois-brand.css">
+  <style>
+    .badge--hec-hms { background: #1F4E79; color: #fff; }
+    .badge--hec-ressim { background: #3A3F8F; color: #fff; }
+    .badge--pdf { background: #8A2A0B; color: #fff; }
+    .badge--agency { background: var(--il-blue); color: #fff; }
+    .badge--huc { background: var(--il-industrial-bg); color: var(--il-blue); border-color: var(--il-industrial); }
+    .badge--type { background: var(--il-storm-bg); color: var(--il-storm-dark); border-color: var(--il-storm-light); }
+
+    .search-hero { padding: 2.5rem 0; }
+    .search-hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); }
+    .search-form { display: flex; gap: .5rem; max-width: 760px; margin: 1.25rem 0 1rem; }
+    .search-form input[type="search"] {
+      flex: 1; min-width: 0; font: 400 1.1rem var(--font-body); padding: .8rem 1rem;
+      border: 2px solid var(--il-white); border-radius: var(--radius); color: var(--il-storm-dark);
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+    .chip {
+      font: 600 .9rem var(--font-body); padding: .35rem .9rem; border-radius: 999px; cursor: pointer;
+      background: transparent; color: var(--il-white); border: 2px solid var(--il-white);
+    }
+    .chip:hover { background: rgba(255,255,255,.15); }
+    .chip[aria-pressed="true"] { background: var(--il-industrial-bg); color: var(--il-blue); border-color: var(--il-industrial-bg); }
+
+    .tabs { display: flex; flex-wrap: wrap; gap: .25rem; border-bottom: 3px solid var(--il-blue); margin-bottom: 1.25rem; }
+    .tabs button {
+      font: 700 .95rem var(--font-head); padding: .7rem 1.1rem; cursor: pointer; border: 0;
+      background: var(--il-storm-bg); color: var(--il-blue); border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .tabs button[aria-selected="true"] { background: var(--il-blue); color: var(--il-white); }
+    .tabs .count { font-weight: 600; opacity: .85; }
+
+    .layout { display: grid; grid-template-columns: 290px 1fr; gap: 2rem; align-items: start; }
+    .sidebar { background: var(--il-storm-bg); border: 1px solid var(--il-storm-light); border-radius: var(--radius); padding: 1rem 1.1rem; }
+    .sidebar details { border-bottom: 1px solid var(--il-storm-light); padding: .6rem 0; }
+    .sidebar details:last-of-type { border-bottom: 0; }
+    .sidebar summary { font: 700 .95rem var(--font-head); color: var(--il-blue); cursor: pointer; }
+    .facet-list { list-style: none; margin: .6rem 0 0; padding: 0; max-height: 18rem; overflow-y: auto; }
+    .facet-list label { display: flex; gap: .5rem; align-items: flex-start; font-size: .95rem; padding: .2rem 0; cursor: pointer; }
+    .facet-list input { margin-top: .25rem; flex: none; }
+    .facet-count { margin-left: auto; color: #595c5b; font-size: .85rem; }
+    .filter-toggle { display: none; }
+
+    .results-bar { display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .results-bar select { font: 400 1rem var(--font-body); padding: .4rem .6rem; border: 1px solid var(--il-storm); border-radius: var(--radius); }
+    .active-filters { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .active-filters button {
+      font: 600 .85rem var(--font-body); padding: .2rem .7rem; border-radius: 999px; cursor: pointer;
+      background: var(--il-industrial-bg); color: var(--il-blue); border: 1px solid var(--il-industrial);
+    }
+
+    .result-card h3 { font-size: 1.05rem; }
+    .result-card .tags { display: flex; flex-wrap: wrap; gap: .35rem; margin: .5rem 0; }
+    .result-card .meta { font-size: .9rem; color: #595c5b; margin: .25rem 0; }
+    .result-card .actions { display: flex; flex-direction: column; gap: .5rem; margin-top: auto; padding-top: .8rem; }
+    .result-card .btn { font-size: .9rem; padding: .55rem .9rem; text-align: center; }
+    .result-card .cat { font: 700 .8rem var(--font-head); color: var(--il-altgeld); text-transform: uppercase; letter-spacing: .04em; }
+    .results-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+    .empty { padding: 2rem; text-align: center; background: var(--il-storm-bg); border-radius: var(--radius); }
+
+    .featured-row { display: flex; gap: 1.25rem; overflow-x: auto; padding: .25rem .25rem 1rem; scroll-snap-type: x proximity; }
+    .featured-row .card { flex: 0 0 290px; scroll-snap-align: start; }
+    .featured-row .card--link h3 { font-size: 1.05rem; }
+
+    dialog.modal {
+      width: min(900px, 94vw); max-height: 92vh; padding: 0; border: 0; border-radius: var(--radius);
+      border-top: 6px solid var(--il-orange); color: var(--il-storm-dark);
+    }
+    dialog.modal::backdrop { background: rgba(0,0,51,.65); }
+    .modal-head { display: flex; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem 0; }
+    .modal-head h2 { font-size: 1.25rem; margin: 0; }
+    .modal-close { flex: none; font: 700 1rem var(--font-head); background: var(--il-blue); color: #fff; border: 0; border-radius: var(--radius); padding: .4rem .8rem; cursor: pointer; height: fit-content; }
+    .modal-body { padding: 1rem 1.5rem 1.5rem; }
+    .meta-grid { display: grid; grid-template-columns: max-content 1fr; gap: .35rem 1.25rem; margin: 0 0 1.25rem; }
+    .meta-grid dt { font-weight: 700; color: var(--il-blue); }
+    .meta-grid dd { margin: 0; }
+    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .75rem; margin-bottom: 1.25rem; }
+    .metric { background: var(--il-storm-bg); border-left: 4px solid var(--il-industrial); padding: .6rem .8rem; border-radius: var(--radius); }
+    .metric strong { display: block; font: 800 1.3rem var(--font-head); color: var(--il-blue); }
+    .metric span { font-size: .85rem; color: #595c5b; }
+    .download-row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-top: 1.25rem; }
+    .download-row select { font: 400 1rem var(--font-body); padding: .6rem; border: 1px solid var(--il-storm); border-radius: var(--radius); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .filter-toggle { display: inline-block; margin-bottom: 1rem; }
+      .sidebar[data-collapsed="true"] { display: none; }
+      .search-form { flex-direction: column; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .meta-grid dd { margin-bottom: .5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero search-hero" aria-labelledby="p1-title">
+      <div class="container">
+        <p class="eyebrow" data-i18n="p1.eyebrow">PoC 1 · Unified Data, Model &amp; Application Catalog</p>
+        <h1 id="p1-title" data-i18n-html="p1.title">Find Illinois <span>water data, models &amp; tools</span></h1>
+        <form class="search-form" id="search-form" role="search" data-i18n-aria="p1.search.label" aria-label="Search the catalog">
+          <label for="q" class="sr-only" style="position:absolute;left:-9999px" data-i18n="p1.search.label">Search the catalog</label>
+          <input type="search" id="q" autocomplete="off" data-i18n-placeholder="p1.search.placeholder" placeholder="Search datasets, models, agencies, HUC-8 codes…">
+          <button type="submit" class="btn btn--light" data-i18n="btn.search">Search</button>
+        </form>
+        <div class="chips" role="group" data-i18n-aria="p1.chips.label" aria-label="Quick filters">
+          <button type="button" class="chip" id="chip-popular" aria-pressed="false" data-i18n="p1.chip.popular">Popular Datasets (Last 2 Weeks)</button>
+          <button type="button" class="chip" data-kw="flood" aria-pressed="false" data-i18n="p1.chip.flood">Flood</button>
+          <button type="button" class="chip" data-kw="groundwater" aria-pressed="false" data-i18n="p1.chip.gw">Groundwater</button>
+          <button type="button" class="chip" data-kw="water loss" aria-pressed="false" data-i18n="p1.chip.loss">Water loss</button>
+          <button type="button" class="chip" data-kw="levee" aria-pressed="false" data-i18n="p1.chip.levee">Levees</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="feat-h">
+      <div class="container">
+        <h2 id="feat-h" data-i18n="p1.featured">Explore Featured IWIC Applications</h2>
+        <div class="featured-row" id="featured" role="list"></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="browse-h">
+      <div class="container">
+        <h2 id="browse-h" class="sr-only" style="position:absolute;left:-9999px" data-i18n="p1.browse">Browse resources</h2>
+        <div class="tabs" role="tablist" id="tabs" data-i18n-aria="p1.tabs.label" aria-label="Resource types"></div>
+        <button type="button" class="btn btn--secondary filter-toggle" id="filter-toggle" aria-expanded="false" aria-controls="sidebar" data-i18n="p1.filters">Filters</button>
+        <div class="layout">
+          <aside class="sidebar" id="sidebar" data-collapsed="false" data-i18n-aria="p1.filters" aria-label="Filters">
+            <div id="facets"></div>
+            <button type="button" class="btn btn--secondary" id="reset" style="margin-top:.75rem;width:100%" data-i18n="btn.reset">Reset filters</button>
+          </aside>
+          <div>
+            <div class="results-bar">
+              <p id="result-count" role="status" aria-live="polite" style="margin:0;font-weight:600"></p>
+              <label><span data-i18n="p1.sort">Sort by</span>
+                <select id="sort">
+                  <option value="relevance" data-i18n="p1.sort.rel">Relevance</option>
+                  <option value="views" data-i18n="p1.sort.views">Most viewed</option>
+                  <option value="updated" data-i18n="p1.sort.updated">Recently updated</option>
+                  <option value="title" data-i18n="p1.sort.title">Title (A–Z)</option>
+                </select>
+              </label>
+            </div>
+            <div class="active-filters" id="active-filters"></div>
+            <div id="results"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="modal" aria-labelledby="modal-title">
+    <div class="modal-head">
+      <h2 id="modal-title"></h2>
+      <button type="button" class="modal-close" id="modal-close" data-i18n="p1.close">Close</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </dialog>
+
+  <script type="module" src="js/poc1-catalog.js"></script>
+</body>
+</html>
