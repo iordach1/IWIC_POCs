@@ -1,0 +1,181 @@
+[
+  {
+    "program_id": "FUND-01",
+    "agency": "IDNR-OWR",
+    "program_name": "Urban Flood Control Grant Program",
+    "program_name_es": "Programa de subvenciones para control de inundaciones urbanas",
+    "eligible_issues": [
+      "Urban Flooding",
+      "Bridge/Culvert Hydraulics"
+    ],
+    "local_match_pct": 25,
+    "dac_waiver_available": true,
+    "prerequisites": [
+      "Engineering planning (hydrologic & hydraulic study)",
+      "Floodway permit",
+      "Land rights / easements",
+      "Bid documents"
+    ],
+    "disbursement_timeline": "6-12 months after award; reimbursement",
+    "summary": "Cost-share grants for structural and nonstructural urban flood reduction projects.",
+    "summary_es": "Subvenciones de costos compartidos para proyectos estructurales y no estructurales de reducción de inundaciones urbanas.",
+    "is_synthetic": true
+  },
+  {
+    "program_id": "FUND-02",
+    "agency": "IDNR-OWR",
+    "program_name": "Local Assistance & Water Loss Technical Program",
+    "program_name_es": "Programa de asistencia local y pérdida de agua",
+    "eligible_issues": [
+      "Water Loss >10%",
+      "Drought Resiliency"
+    ],
+    "local_match_pct": 20,
+    "dac_waiver_available": false,
+    "prerequisites": [
+      "Water audit",
+      "Water System Improvement Plan (WSIP)",
+      "Local council resolution"
+    ],
+    "disbursement_timeline": "3-9 months; technical assistance",
+    "summary": "Support for allocatees to complete audits and WSIPs when non-revenue water exceeds 10%.",
+    "summary_es": "Apoyo a asignatarios para completar auditorías y planes cuando el agua no facturada supera el 10%.",
+    "is_synthetic": true
+  },
+  {
+    "program_id": "FUND-03",
+    "agency": "IEPA",
+    "program_name": "Drinking Water State Revolving Fund (DWSRF)",
+    "program_name_es": "Fondo rotatorio estatal de agua potable (DWSRF)",
+    "eligible_issues": [
+      "Lead Service Lines",
+      "Water Loss >10%",
+      "Drought Resiliency"
+    ],
+    "local_match_pct": 0,
+    "dac_waiver_available": true,
+    "prerequisites": [
+      "Facility plan / preliminary engineering",
+      "Construction permit",
+      "Land rights",
+      "Bid documents",
+      "Environmental review"
+    ],
+    "disbursement_timeline": "12-24 months; low-interest loan with principal forgiveness",
+    "summary": "Low-interest loans and principal forgiveness for drinking water infrastructure and lead line replacement.",
+    "summary_es": "Préstamos de bajo interés y condonación de capital para infraestructura de agua potable y reemplazo de líneas de plomo.",
+    "is_synthetic": true
+  },
+  {
+    "program_id": "FUND-04",
+    "agency": "IEPA",
+    "program_name": "Clean Water State Revolving Fund (CWSRF)",
+    "program_name_es": "Fondo rotatorio estatal de agua limpia (CWSRF)",
+    "eligible_issues": [
+      "Urban Flooding",
+      "Levee Rehabilitation"
+    ],
+    "local_match_pct": 0,
+    "dac_waiver_available": true,
+    "prerequisites": [
+      "Facility plan",
+      "NPDES / construction permit",
+      "Land rights",
+      "Bid documents"
+    ],
+    "disbursement_timeline": "12-24 months; low-interest loan",
+    "summary": "Low-interest loans for wastewater, stormwater and green infrastructure projects.",
+    "summary_es": "Préstamos de bajo interés para proyectos de aguas residuales, aguas pluviales e infraestructura verde.",
+    "is_synthetic": true
+  },
+  {
+    "program_id": "FUND-05",
+    "agency": "IEMA",
+    "program_name": "Hazard Mitigation Grant Program (HMGP)",
+    "program_name_es": "Programa de subvenciones para mitigación de riesgos (HMGP)",
+    "eligible_issues": [
+      "Urban Flooding",
+      "Levee Rehabilitation",
+      "Bridge/Culvert Hydraulics"
+    ],
+    "local_match_pct": 25,
+    "dac_waiver_available": false,
+    "prerequisites": [
+      "Benefit-cost analysis",
+      "Engineering planning",
+      "Local hazard mitigation plan",
+      "Environmental & historic review"
+    ],
+    "disbursement_timeline": "18-36 months after disaster declaration; reimbursement",
+    "summary": "Post-disaster FEMA-funded mitigation for flood buyouts, elevation and drainage improvements.",
+    "summary_es": "Mitigación financiada por FEMA tras desastres para compras, elevación y mejoras de drenaje.",
+    "is_synthetic": true
+  },
+  {
+    "program_id": "FUND-06",
+    "agency": "IEMA",
+    "program_name": "Building Resilient Infrastructure and Communities (BRIC)",
+    "program_name_es": "Infraestructura y comunidades resilientes (BRIC)",
+    "eligible_issues": [
+      "Urban Flooding",
+      "Drought Resiliency",
+      "Levee Rehabilitation"
+    ],
+    "local_match_pct": 25,
+    "dac_waiver_available": true,
+    "prerequisites": [
+      "Benefit-cost analysis",
+      "Engineering planning",
+      "Local hazard mitigation plan",
+      "Land rights"
+    ],
+    "disbursement_timeline": "24-48 months; competitive national award",
+    "summary": "Competitive pre-disaster mitigation funding with higher federal share for small impoverished communities.",
+    "summary_es": "Financiamiento competitivo de mitigación previa a desastres con mayor aporte federal para comunidades pequeñas.",
+    "is_synthetic": true
+  },
+  {
+    "program_id": "FUND-07",
+    "agency": "IDCEO",
+    "program_name": "Community Development Block Grant (CDBG) Public Infrastructure",
+    "program_name_es": "Subvención en bloque para infraestructura pública (CDBG)",
+    "eligible_issues": [
+      "Water Loss >10%",
+      "Lead Service Lines",
+      "Urban Flooding"
+    ],
+    "local_match_pct": 10,
+    "dac_waiver_available": true,
+    "prerequisites": [
+      "Low-to-moderate-income benefit survey",
+      "Engineering planning",
+      "Land rights",
+      "Bid documents"
+    ],
+    "disbursement_timeline": "9-18 months; reimbursement",
+    "summary": "Grants for water, sewer and drainage in low- and moderate-income communities.",
+    "summary_es": "Subvenciones para agua, alcantarillado y drenaje en comunidades de ingresos bajos y moderados.",
+    "is_synthetic": true
+  },
+  {
+    "program_id": "FUND-08",
+    "agency": "IDOA",
+    "program_name": "Conservation Practices Cost-Share Program",
+    "program_name_es": "Programa de costos compartidos de prácticas de conservación",
+    "eligible_issues": [
+      "Drought Resiliency",
+      "Urban Flooding"
+    ],
+    "local_match_pct": 25,
+    "dac_waiver_available": false,
+    "prerequisites": [
+      "Conservation plan",
+      "Soil & Water Conservation District approval",
+      "Landowner agreement"
+    ],
+    "disbursement_timeline": "3-6 months; cost-share after practice installation",
+    "summary": "Cost-share for erosion, soil health and water quality practices through Soil and Water Conservation Districts.",
+    "summary_es": "Costos compartidos para prácticas de erosión, salud del suelo y calidad del agua a través de distritos de conservación.",
+    "is_synthetic": true
+  }
+]

@@ -1,0 +1,517 @@
+{
+  "type": "FeatureCollection",
+  "name": "iwic-hydraulic-models",
+  "is_synthetic": true,
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.409,
+          41.691
+        ]
+      },
+      "properties": {
+        "id": "HM-001",
+        "name": "Fox River at Millhurst Dam",
+        "waterway": "Fox River",
+        "county": "Kendall",
+        "feature_type": "Hydraulic Bridge Model",
+        "holding_agency": "IDNR-OWR",
+        "model_software": "HEC-RAS 6.5 2D",
+        "return_period_100yr_cfs": 38500,
+        "flood_stage_ft": 13,
+        "current_stage_ft": 4,
+        "status": "Needs Update",
+        "catalog_id": "IWIC-001",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3515,
+          41.6828
+        ]
+      },
+      "properties": {
+        "id": "HM-002",
+        "name": "Fox River at Oswego Bridge",
+        "waterway": "Fox River",
+        "county": "Kendall",
+        "feature_type": "Hydraulic Bridge Model",
+        "holding_agency": "IDNR-OWR",
+        "model_software": "HEC-RAS 6.5 2D",
+        "return_period_100yr_cfs": 39200,
+        "flood_stage_ft": 12,
+        "current_stage_ft": 13,
+        "status": "Verified",
+        "catalog_id": "IWIC-001",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8206,
+          41.8353
+        ]
+      },
+      "properties": {
+        "id": "HM-003",
+        "name": "Des Plaines River at Riverside",
+        "waterway": "Des Plaines River",
+        "county": "Cook",
+        "feature_type": "Hydraulic Bridge Model",
+        "holding_agency": "USACE",
+        "model_software": "HEC-RAS 6.5",
+        "return_period_100yr_cfs": 17200,
+        "flood_stage_ft": 7,
+        "current_stage_ft": 2,
+        "status": "Verified",
+        "catalog_id": "IWIC-007",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8231,
+          41.8306
+        ]
+      },
+      "properties": {
+        "id": "HM-004",
+        "name": "Des Plaines River at Riverside Gage",
+        "waterway": "Des Plaines River",
+        "county": "Cook",
+        "feature_type": "Stream Gage / Rainfall",
+        "holding_agency": "ISWS",
+        "model_software": "HEC-HMS",
+        "return_period_100yr_cfs": 17200,
+        "flood_stage_ft": 7,
+        "current_stage_ft": 6.1,
+        "status": "Needs Update",
+        "catalog_id": "IWIC-008",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.9548,
+          39.8403
+        ]
+      },
+      "properties": {
+        "id": "HM-005",
+        "name": "Sangamon River at Decatur",
+        "waterway": "Sangamon River",
+        "county": "Macon",
+        "feature_type": "Stream Gage / Rainfall",
+        "holding_agency": "ISWS",
+        "model_software": "HEC-HMS",
+        "return_period_100yr_cfs": 21500,
+        "flood_stage_ft": 18,
+        "current_stage_ft": 9.5,
+        "status": "Verified",
+        "catalog_id": "IWIC-008",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.589,
+          40.6936
+        ]
+      },
+      "properties": {
+        "id": "HM-006",
+        "name": "Illinois River at Peoria",
+        "waterway": "Illinois River",
+        "county": "Peoria",
+        "feature_type": "Stream Gage / Rainfall",
+        "holding_agency": "USACE",
+        "model_software": "HEC-RAS 6.5",
+        "return_period_100yr_cfs": 112000,
+        "flood_stage_ft": 18,
+        "current_stage_ft": 4.7,
+        "status": "Advisory",
+        "catalog_id": "IWIC-008",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.621,
+              40.698
+            ],
+            [
+              -89.581,
+              40.698
+            ],
+            [
+              -89.581,
+              40.722
+            ],
+            [
+              -89.621,
+              40.722
+            ],
+            [
+              -89.621,
+              40.698
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "HM-007",
+        "name": "Peoria Riverfront Levee System",
+        "waterway": "Illinois River",
+        "county": "Peoria",
+        "feature_type": "Levee System",
+        "holding_agency": "USACE",
+        "model_software": "HEC-RAS 6.5",
+        "return_period_100yr_cfs": 112000,
+        "flood_stage_ft": 18,
+        "current_stage_ft": 7.2,
+        "status": "Needs Update",
+        "catalog_id": "IWIC-005",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.197,
+              36.993
+            ],
+            [
+              -89.15700000000001,
+              36.993
+            ],
+            [
+              -89.15700000000001,
+              37.017
+            ],
+            [
+              -89.197,
+              37.017
+            ],
+            [
+              -89.197,
+              36.993
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "HM-008",
+        "name": "Cache River / Cairo Levee",
+        "waterway": "Cache River",
+        "county": "Alexander",
+        "feature_type": "Levee System",
+        "holding_agency": "USACE",
+        "model_software": "HEC-HMS",
+        "return_period_100yr_cfs": 58000,
+        "flood_stage_ft": 40,
+        "current_stage_ft": 17.2,
+        "status": "Verified",
+        "catalog_id": "IWIC-024",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.372,
+          38.61
+        ]
+      },
+      "properties": {
+        "id": "HM-009",
+        "name": "Kaskaskia River at Carlyle",
+        "waterway": "Kaskaskia River",
+        "county": "Clinton",
+        "feature_type": "Stream Gage / Rainfall",
+        "holding_agency": "USACE",
+        "model_software": "HEC-ResSim",
+        "return_period_100yr_cfs": 31500,
+        "flood_stage_ft": 26,
+        "current_stage_ft": 27.3,
+        "status": "Verified",
+        "catalog_id": "IWIC-014",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6816,
+          38.73
+        ]
+      },
+      "properties": {
+        "id": "HM-010",
+        "name": "Embarras River at Lawrenceville",
+        "waterway": "Embarras River",
+        "county": "Lawrence",
+        "feature_type": "Stream Gage / Rainfall",
+        "holding_agency": "USGS",
+        "model_software": "HEC-HMS",
+        "return_period_100yr_cfs": 24800,
+        "flood_stage_ft": 22,
+        "current_stage_ft": 20.2,
+        "status": "Needs Update",
+        "catalog_id": "IWIC-008",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.5151,
+          41.5067
+        ]
+      },
+      "properties": {
+        "id": "HM-011",
+        "name": "Rock River at Moline",
+        "waterway": "Rock River",
+        "county": "Rock Island",
+        "feature_type": "Hydraulic Bridge Model",
+        "holding_agency": "County Highway Dept",
+        "model_software": "HEC-RAS 6.5",
+        "return_period_100yr_cfs": 64500,
+        "flood_stage_ft": 12,
+        "current_stage_ft": 4.6,
+        "status": "Advisory",
+        "catalog_id": "IWIC-018",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2434,
+          40.1164
+        ]
+      },
+      "properties": {
+        "id": "HM-012",
+        "name": "Mahomet Aquifer Well Champaign Cluster",
+        "waterway": "Mahomet Aquifer",
+        "county": "Champaign",
+        "feature_type": "Observation Well",
+        "holding_agency": "ISWS",
+        "model_software": "MODFLOW 6",
+        "return_period_100yr_cfs": 0,
+        "flood_stage_ft": 0,
+        "current_stage_ft": null,
+        "status": "Verified",
+        "catalog_id": "IWIC-003",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.8,
+          40.24
+        ]
+      },
+      "properties": {
+        "id": "HM-013",
+        "name": "Mahomet Aquifer Well Mason County",
+        "waterway": "Mahomet Aquifer",
+        "county": "Mason",
+        "feature_type": "Observation Well",
+        "holding_agency": "ISWS",
+        "model_software": "MODFLOW 6",
+        "return_period_100yr_cfs": 0,
+        "flood_stage_ft": 0,
+        "current_stage_ft": null,
+        "status": "Needs Update",
+        "catalog_id": "IWIC-003",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2942,
+          42.1656
+        ]
+      },
+      "properties": {
+        "id": "HM-014",
+        "name": "Fox River Algonquin LOMR Site",
+        "waterway": "Fox River",
+        "county": "McHenry",
+        "feature_type": "NFIP LOMR Site",
+        "holding_agency": "FEMA",
+        "model_software": "HEC-RAS 6.5",
+        "return_period_100yr_cfs": 27800,
+        "flood_stage_ft": 9,
+        "current_stage_ft": 5.1,
+        "status": "Verified",
+        "catalog_id": "IWIC-004",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8003,
+          42.1817
+        ]
+      },
+      "properties": {
+        "id": "HM-015",
+        "name": "Skokie River Highland Park LOMR Site",
+        "waterway": "Skokie River",
+        "county": "Lake",
+        "feature_type": "NFIP LOMR Site",
+        "holding_agency": "Private Engineering Consultant",
+        "model_software": "HEC-RAS 6.5",
+        "return_period_100yr_cfs": 3900,
+        "flood_stage_ft": 6,
+        "current_stage_ft": 5.3,
+        "status": "Verified",
+        "catalog_id": "IWIC-004",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.1965,
+              36.9922
+            ],
+            [
+              -89.15650000000001,
+              36.9922
+            ],
+            [
+              -89.15650000000001,
+              37.0162
+            ],
+            [
+              -89.1965,
+              37.0162
+            ],
+            [
+              -89.1965,
+              36.9922
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "HM-016",
+        "name": "Mississippi River at Cairo Port",
+        "waterway": "Mississippi River",
+        "county": "Alexander",
+        "feature_type": "Levee System",
+        "holding_agency": "USACE",
+        "model_software": "HEC-RAS 6.5",
+        "return_period_100yr_cfs": 1250000,
+        "flood_stage_ft": 40,
+        "current_stage_ft": 23.6,
+        "status": "Needs Update",
+        "catalog_id": "IWIC-005",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.3351,
+          37.7645
+        ]
+      },
+      "properties": {
+        "id": "HM-017",
+        "name": "Big Muddy River at Murphysboro",
+        "waterway": "Big Muddy River",
+        "county": "Jackson",
+        "feature_type": "NFIP LOMR Site",
+        "holding_agency": "FEMA",
+        "model_software": "HEC-RAS 6.5",
+        "return_period_100yr_cfs": 36000,
+        "flood_stage_ft": 20,
+        "current_stage_ft": 21,
+        "status": "Verified",
+        "catalog_id": "IWIC-004",
+        "is_synthetic": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.91,
+          39.87
+        ]
+      },
+      "properties": {
+        "id": "HM-018",
+        "name": "Lake Decatur Watershed Rainfall Network",
+        "waterway": "Sangamon River",
+        "county": "Macon",
+        "feature_type": "Stream Gage / Rainfall",
+        "holding_agency": "ISWS",
+        "model_software": "HEC-HMS",
+        "return_period_100yr_cfs": 21500,
+        "flood_stage_ft": 18,
+        "current_stage_ft": 7.9,
+        "status": "Verified",
+        "catalog_id": "IWIC-006",
+        "is_synthetic": true
+      }
+    }
+  ]
+}
