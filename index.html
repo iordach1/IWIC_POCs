@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Illinois Integrated Water Information Center (IWIC) · Workshop Overview</title>
+  <meta name="description" content="Prototype of the Illinois Integrated Water Information Center: three proofs of concept built on synthetic data with free, open-source tools.">
+  <link rel="stylesheet" href="css/illinois-brand.css">
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Illinois State Water Plan Task Force Workshop</p>
+        <h1 id="hero-title" data-i18n-html="hero.title">One front door for Illinois <span>water science</span></h1>
+        <p data-i18n="hero.body">The Illinois Integrated Water Information Center (IWIC), housed at the Prairie Research Institute at the University of Illinois, is envisioned as a centralized library of water science-based information and technology.</p>
+        <div class="hero-actions">
+          <a class="btn btn--light" href="#pocs" data-i18n="hero.cta1">Explore the 3 proofs of concept</a>
+          <a class="btn btn--outline" href="#budget" data-i18n="hero.cta2">See the $0 architecture</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pocs" aria-labelledby="poc-heading">
+      <div class="container">
+        <h2 id="poc-heading" data-i18n="poc.heading">3 Proofs of Concept</h2>
+        <p class="muted" data-i18n="poc.intro">Three working demos share a single synthetic dataset.</p>
+        <div class="grid grid--3">
+          <article class="card card--link">
+            <span class="card-num">PoC 1</span>
+            <h3><a class="stretched" href="poc1-catalog.html" data-i18n="poc1.title">Unified Data, Model &amp; Application Catalog</a></h3>
+            <p data-i18n="poc1.body">Search and filter datasets, models and applications.</p>
+            <span class="badge badge--hec-ras">HEC-RAS</span>
+            <p></p>
+            <p><strong data-i18n="poc.serves">Serves:</strong></p>
+            <ul class="persona-list">
+              <li data-i18n="persona.engineers">State agency engineers</li>
+              <li data-i18n="persona.operators">Municipal water operators</li>
+            </ul>
+            <span class="card-cta" aria-hidden="true">poc1-catalog.html →</span>
+          </article>
+          <article class="card card--link card--blue">
+            <span class="card-num">PoC 2</span>
+            <h3><a class="stretched" href="poc2-map.html" data-i18n="poc2.title">Geospatial Hydraulics &amp; SRF Equity Explorer</a></h3>
+            <p data-i18n="poc2.body">Map gages, models, levees and utilities.</p>
+            <span class="badge badge--geojson">GeoJSON</span>
+            <p></p>
+            <p><strong data-i18n="poc.serves">Serves:</strong></p>
+            <ul class="persona-list">
+              <li data-i18n="persona.emergency">Emergency managers</li>
+              <li data-i18n="persona.engineers">State agency engineers</li>
+              <li data-i18n="persona.communities">Disadvantaged communities</li>
+            </ul>
+            <span class="card-cta" aria-hidden="true">poc2-map.html →</span>
+          </article>
+          <article class="card card--link card--prairie">
+            <span class="card-num">PoC 3</span>
+            <h3><a class="stretched" href="poc3-assistant.html" data-i18n="poc3.title">“Ask IWIC” Multilingual AI &amp; Grant Navigator</a></h3>
+            <p data-i18n="poc3.body">Ask plain-language questions in English or Spanish.</p>
+            <span class="badge badge--csv">CSV</span>
+            <p></p>
+            <p><strong data-i18n="poc.serves">Serves:</strong></p>
+            <ul class="persona-list">
+              <li data-i18n="persona.communities">Disadvantaged communities</li>
+              <li data-i18n="persona.operators">Municipal water operators</li>
+            </ul>
+            <span class="card-cta" aria-hidden="true">poc3-assistant.html →</span>
+          </article>
+        </div>
+        <p></p>
+        <div class="callout callout--editorial" data-i18n="lang.callout">Overcoming language barriers is a State Water Plan recommendation. Use the English | Español toggle to switch languages.</div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="budget" aria-labelledby="budget-heading">
+      <div class="container">
+        <h2 id="budget-heading" data-i18n="budget.heading">De Minimis Budget Architecture</h2>
+        <p data-i18n="budget.intro">Every tool is built from free, open-source software and runs client-side.</p>
+        <div class="grid grid--4">
+          <div class="card card--prairie"><h3>GitHub Pages</h3><p data-i18n="budget.hosting.body">Static files served free from a GitHub repository.</p><span class="pill pill--ok">$0</span></div>
+          <div class="card card--blue"><h3>Leaflet</h3><p data-i18n="budget.leaflet">Interactive mapping with no API keys.</p><span class="pill pill--ok">$0</span></div>
+          <div class="card card--blue"><h3>Fuse.js</h3><p data-i18n="budget.fuse">Client-side fuzzy search.</p><span class="pill pill--ok">$0</span></div>
+          <div class="card card--blue"><h3>Chart.js</h3><p data-i18n="budget.chart">Accessible, responsive charts.</p><span class="pill pill--ok">$0</span></div>
+          <div class="card card--blue"><h3>WebLLM</h3><p data-i18n="budget.webllm">Optional in-browser WebGPU language model.</p><span class="pill pill--ok">$0</span></div>
+          <div class="card card--prairie">
+            <h3 data-i18n="budget.total">Total recurring cost</h3>
+            <p class="cost-figure" data-i18n="cost.zero">$0</p>
+            <p data-i18n="budget.total.body">All at no recurring cost.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initIWICLayout } from './js/common-ui.js';
+    initIWICLayout('home');
+  </script>
+</body>
+</html>
