@@ -71,12 +71,9 @@ function sysCategory(s) {
 function initMap() {
   map = L.map('map', { zoomControl: true }).setView([40.0, -89.2], 7);
   const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' });
-  // Public, client-side CARTO basemap key; restrict it by domain in the CARTO dashboard.
-  const CARTO_API_KEY = 'cb1_45a0_1_0fd240c90c2200d1262e9adf';
-  const carto = L.tileLayer(`https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?api_key=${CARTO_API_KEY}`, { maxZoom: 19, subdomains: 'abcd', attribution: '&copy; OpenStreetMap contributors &copy; CARTO' });
   const usgs = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSHydroCached/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, attribution: 'USGS The National Map: Hydrography' });
-  carto.addTo(map);
-  L.control.layers({ 'CartoDB Positron': carto, OpenStreetMap: osm, 'USGS National Map Hydrography': usgs }, {}, { collapsed: true }).addTo(map);
+  usgs.addTo(map);
+  L.control.layers({ 'USGS National Map Hydrography': usgs, OpenStreetMap: osm }, {}, { collapsed: true }).addTo(map);
   layerA = L.layerGroup().addTo(map);
   layerB = L.layerGroup();
 }
