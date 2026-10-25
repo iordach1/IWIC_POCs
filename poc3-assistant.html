@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IWIC PoC 3 · AI Water &amp; Grant Navigator</title>
+  <meta name="description" content="Ask IWIC: a bilingual, client-side RAG assistant and multi-agency funding matrix built on synthetic Illinois water data.">
+  <link rel="stylesheet" href="css/illinois-brand.css">
+  <style>
+    .p3 { display: grid; grid-template-columns: 65fr 35fr; gap: 1.25rem; padding: 1.25rem 0 2rem; align-items: start; }
+    .p3 > section { min-width: 0; }
+    .pane { background: var(--il-white); border: 1px solid var(--il-storm-light); border-top: 4px solid var(--il-orange); border-radius: var(--radius); padding: 1rem; }
+    .pane h2 { font-size: 1.15rem; margin-bottom: .5rem; }
+    .pane h3 { font-size: .95rem; margin: .9rem 0 .35rem; }
+    .modebar { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+    .mode-btn { font: 700 .85rem var(--font-body); padding: .4rem .8rem; border-radius: 999px; border: 2px solid var(--il-blue); background: var(--il-white); color: var(--il-blue); cursor: pointer; }
+    .mode-btn[aria-pressed="true"] { background: var(--il-blue); color: var(--il-white); }
+    .mode-btn:disabled { opacity: .55; cursor: not-allowed; }
+    .mode-note { font-size: .85rem; color: #595c5b; margin: 0 0 .6rem; }
+    .llm-opts { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .6rem; font-size: .9rem; }
+    .llm-opts select { font: 400 .95rem var(--font-body); padding: .3rem; border: 1px solid var(--il-storm); border-radius: var(--radius); }
+    progress { width: 100%; height: 14px; accent-color: var(--il-industrial); }
+    .chip-group { margin: .4rem 0; }
+    .chip-group p { margin: 0 0 .25rem; font-size: .8rem; font-weight: 700; color: #595c5b; text-transform: uppercase; letter-spacing: .05em; }
+    .chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .pchip { font: 400 .9rem var(--font-body); text-align: left; padding: .35rem .7rem; border: 1px solid var(--il-industrial); background: var(--il-industrial-bg); color: var(--il-blue); border-radius: 999px; cursor: pointer; }
+    .pchip:hover, .pchip:focus-visible { background: var(--il-industrial); color: var(--il-white); }
+    .chat { height: 46vh; min-height: 300px; overflow-y: auto; background: var(--il-storm-bg); border: 1px solid var(--il-storm-light); border-radius: var(--radius); padding: .75rem; margin: .75rem 0; }
+    .msg { margin: 0 0 .9rem; max-width: 100%; }
+    .msg .who { font: 700 .75rem var(--font-head); color: #595c5b; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .15rem; }
+    .msg.user .bubble { background: var(--il-blue); color: var(--il-white); margin-left: 15%; }
+    .msg.bot .bubble { background: var(--il-white); border: 1px solid var(--il-storm-light); border-left: 4px solid var(--il-industrial); }
+    .bubble { padding: .6rem .8rem; border-radius: var(--radius); overflow-wrap: anywhere; }
+    .bubble p { margin: 0 0 .5rem; }
+    .bubble ul { margin: .2rem 0 .5rem 1.1rem; padding: 0; }
+    .meta { font-size: .8rem; color: #595c5b; margin-top: .3rem; }
+    .cites { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: .5rem; margin-top: .5rem; }
+    .cite { background: var(--il-white); border: 1px solid var(--il-storm-light); border-left: 4px solid var(--il-industrial); border-radius: var(--radius); padding: .5rem .6rem; font-size: .88rem; }
+    .cite[data-kind="model"] { border-left-color: var(--il-prairie); }
+    .cite[data-kind="system"] { border-left-color: var(--il-berry); }
+    .cite[data-kind="funding"] { border-left-color: var(--il-orange); }
+    .cite .k { font: 700 .7rem var(--font-head); text-transform: uppercase; letter-spacing: .05em; color: #595c5b; }
+    .cite strong { display: block; color: var(--il-blue); margin: .1rem 0 .2rem; }
+    .cite .links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .3rem; }
+    .cite a, .cite button.lnk { color: var(--il-altgeld); font: 600 .85rem var(--font-body); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+    .ask { display: flex; gap: .5rem; }
+    .ask input { flex: 1; font: 400 1rem var(--font-body); padding: .6rem; border: 2px solid var(--il-blue); border-radius: var(--radius); min-width: 0; }
+    .ask button { font: 700 1rem var(--font-head); background: var(--il-blue); color: var(--il-white); border: 0; border-radius: var(--radius); padding: 0 1.2rem; cursor: pointer; }
+    .ask button:hover { background: var(--il-blue-darker); }
+    fieldset { border: 1px solid var(--il-storm-light); border-radius: var(--radius); margin: 0 0 .75rem; padding: .5rem .75rem; }
+    legend { font: 700 .9rem var(--font-head); color: var(--il-blue); padding: 0 .3rem; }
+    fieldset label, .dac label { display: flex; gap: .5rem; align-items: center; padding: .15rem 0; cursor: pointer; }
+    .dac { background: var(--il-storm-bg); border-left: 4px solid var(--il-prairie); padding: .5rem .75rem; border-radius: var(--radius); margin-bottom: .75rem; font-weight: 600; }
+    .agency { border: 1px solid var(--il-storm-light); border-radius: var(--radius); margin-bottom: .6rem; }
+    .agency > h3 { margin: 0; padding: .35rem .6rem; background: var(--il-blue); color: var(--il-white); font-size: .9rem; border-radius: var(--radius) var(--radius) 0 0; }
+    .agency .none { margin: 0; padding: .5rem .6rem; font-size: .88rem; color: #595c5b; }
+    .prog { padding: .5rem .6rem; border-top: 1px solid var(--il-storm-light); font-size: .88rem; }
+    .prog:first-of-type { border-top: 0; }
+    .prog h4 { margin: 0 0 .25rem; font-size: .92rem; }
+    .prog dl { display: grid; grid-template-columns: max-content 1fr; gap: .1rem .6rem; margin: 0; }
+    .prog dt { font-weight: 700; color: var(--il-blue); }
+    .prog dd { margin: 0; }
+    .tag { display: inline-block; padding: .02rem .5rem; border-radius: 999px; font-weight: 700; font-size: .78rem; }
+    .tag--ok { background: var(--il-prairie); color: var(--il-white); }
+    .tag--warn { background: var(--il-harvest); color: var(--il-blue); }
+    .tag--neutral { background: var(--il-storm-bg); border: 1px solid var(--il-storm); color: var(--il-storm-dark); }
+    .prog.hl { outline: 3px solid var(--il-orange); }
+    .sr-live { position: absolute; left: -9999px; }
+    @media (max-width: 900px) { .p3 { grid-template-columns: 1fr; } .msg.user .bubble { margin-left: 0; } }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="container">
+      <div class="p3">
+        <section aria-labelledby="ask-h">
+          <div class="pane">
+            <h2 id="ask-h" data-i18n="p3.ask.title">“Ask IWIC” Conversational Assistant</h2>
+
+            <div class="modebar" role="group" data-i18n-aria="p3.mode.label" aria-label="Assistant mode">
+              <button type="button" class="mode-btn" id="mode-rag" aria-pressed="true" data-i18n="p3.mode.rag">Mode 1 · Client-Side RAG (instant)</button>
+              <button type="button" class="mode-btn" id="mode-llm" aria-pressed="false" data-i18n="p3.mode.llm">Mode 2 · Browser WebLLM (WebGPU)</button>
+            </div>
+            <p class="mode-note" id="mode-note"></p>
+            <div class="llm-opts" id="llm-opts" hidden>
+              <label for="llm-model" data-i18n="p3.llm.model">Local model</label>
+              <select id="llm-model">
+                <option value="SmolLM2-360M-Instruct-q4f16_1-MLC">SmolLM2-360M-Instruct (~0.4 GB)</option>
+                <option value="Llama-3.2-1B-Instruct-q4f16_1-MLC">Llama-3.2-1B-Instruct (~0.9 GB)</option>
+              </select>
+              <progress id="llm-progress" max="1" value="0" hidden aria-label="Model download progress"></progress>
+              <span id="llm-status" role="status"></span>
+            </div>
+
+            <div class="chip-group"><p data-i18n="p3.chips.en">Workshop prompts · English</p><div class="chips" id="chips-en"></div></div>
+            <div class="chip-group"><p data-i18n="p3.chips.es">Preguntas de taller · Español</p><div class="chips" id="chips-es" lang="es"></div></div>
+
+            <div class="chat" id="chat" role="log" aria-live="polite" aria-label="Conversation" tabindex="0"></div>
+
+            <form class="ask" id="ask-form">
+              <label for="q" class="sr-live" data-i18n="p3.input.label">Your question</label>
+              <input type="text" id="q" autocomplete="off">
+              <button type="submit" data-i18n="p3.send">Ask</button>
+            </form>
+          </div>
+        </section>
+
+        <section aria-labelledby="matrix-h">
+          <div class="pane">
+            <h2 id="matrix-h" data-i18n="p3.matrix.title">Multi-Agency Funding &amp; Local Assistance Matrix</h2>
+            <p class="mode-note" data-i18n="p3.matrix.desc">Select your water challenges to compare non-uniform criteria, local match and timelines.</p>
+            <fieldset id="challenges"><legend data-i18n="p3.matrix.challenges">Your water challenge</legend></fieldset>
+            <div class="dac"><label><input type="checkbox" id="dac"> <span data-i18n="p3.matrix.dac">Disadvantaged Community Status</span></label></div>
+            <p id="matrix-summary" class="mode-note" role="status"></p>
+            <div id="matrix"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="js/poc3-assistant.js"></script>
+</body>
+</html>
