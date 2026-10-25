@@ -549,6 +549,11 @@ async function init() {
   }
   if (!state.fuse) $('result-count').insertAdjacentHTML('afterend', `<p class="muted" role="note">${esc(t('p1.search.fallback'))}</p>`);
   render();
+  const deepId = new URLSearchParams(location.search).get('id');
+  if (deepId) {
+    const rec = state.items.find((x) => x.id.toLowerCase() === deepId.trim().toLowerCase());
+    if (rec) openModal(rec.id);
+  }
 }
 
 init();
