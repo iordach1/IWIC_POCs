@@ -42,7 +42,7 @@ All pages must strictly adhere to official University of Illinois digital brand 
 ## 4. Technical Stack Constraints (100% Free & Open Source, Static GitHub Pages)
 - **HTML5 / CSS3 / Vanilla ES6+ JavaScript** (modular ES modules so the site runs directly on GitHub Pages without complex build failures, or via a zero-config static deployment).
 - **Search & Indexing (PoC 1)**: `Fuse.js` (via open CDN `https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.mjs`).
-- **Mapping & GIS (PoC 2)**: `Leaflet.js` (`1.9.4` via unpkg/jsDelivr) with free OpenStreetMap, CartoDB Positron, and USGS National Map Hydrography (`USGSHydroCached`) tile layers. No API keys allowed.
+- **Mapping & GIS (PoC 2)**: `Leaflet.js` (`1.9.4` via unpkg/jsDelivr) with free OpenStreetMap and USGS National Map Hydrography (`USGSHydroCached`) tile layers. No API keys allowed.
 - **Charts & Analytics (PoC 2)**: `Chart.js` (`4.4.x` via jsDelivr).
 - **Client-Side AI Assistant (PoC 3)**:
   - **Primary Mode (Instant, Zero-Download)**: Deterministic Client-Side Retrieval-Augmented Generation (RAG) engine written in JavaScript using TF-IDF / BM25 scoring over `/data/iwic-catalog.json`, `/data/water-systems-srf.json`, `/data/hydraulic-models.geojson`, and `/data/agency-funding-programs.json`.

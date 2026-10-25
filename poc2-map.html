@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="css/illinois-brand.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <style>
-    .app { display: grid; grid-template-columns: 360px 1fr; grid-template-rows: auto 1fr; height: calc(100vh - 160px); min-height: 640px; }
+    .app { display: grid; grid-template-columns: 360px 1fr; grid-template-rows: auto 1fr; height: calc(100vh - 100px); min-height: 820px; }
+    .panel { grid-column: 1; grid-row: 2; }
+    .map-wrap { grid-column: 2; grid-row: 2; }
     .app[data-collapsed="true"] { grid-template-columns: 0 1fr; }
     .scenario-bar { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; padding: .6rem 1rem; background: var(--il-blue); }
     .scenario-bar .btn { background: transparent; border-color: var(--il-white); font-size: .9rem; padding: .5rem .9rem; text-align: left; }
@@ -37,10 +39,10 @@
     table.rank tbody tr { cursor: pointer; }
     table.rank tbody tr:hover, table.rank tbody tr:focus { background: var(--il-industrial-bg); }
     .map-wrap { display: grid; grid-template-rows: 1fr auto; min-width: 0; min-height: 0; position: relative; }
-    #map { width: 100%; height: 100%; min-height: 360px; }
+    #map { width: 100%; height: 100%; min-height: 520px; }
     .toggle-panel { position: absolute; z-index: 1000; top: 10px; left: 56px; }
     .toggle-panel button { font: 700 .85rem var(--font-body); padding: .4rem .7rem; background: var(--il-white); color: var(--il-blue); border: 2px solid var(--il-blue); border-radius: var(--radius); cursor: pointer; }
-    .drawer { background: var(--il-white); border-top: 4px solid var(--il-orange); padding: .6rem 1rem; max-height: 42vh; overflow-y: auto; }
+    .drawer { background: var(--il-white); border-top: 4px solid var(--il-orange); padding: .6rem 1rem; max-height: 30vh; overflow-y: auto; }
     .drawer[data-open="false"] .drawer-body { display: none; }
     .drawer-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
     .drawer-head h2 { font-size: 1.05rem; margin: 0; }
@@ -58,6 +60,7 @@
     @media (max-width: 900px) {
       .app { grid-template-columns: 1fr; grid-template-rows: auto auto 70vh; height: auto; }
       .app[data-collapsed="true"] { grid-template-columns: 1fr; }
+      .panel, .map-wrap { grid-column: 1; grid-row: auto; }
       .panel { max-height: 60vh; }
       .drawer-body { grid-template-columns: 1fr; }
     }

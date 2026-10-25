@@ -45,7 +45,7 @@ All three PoCs share one dataset in [`/data`](data/). **Real** Illinois hydrogra
 | PoC | Page | Description | Stack |
 | :-- | :-- | :-- | :-- |
 | 1 | `poc1-catalog.html` | **Unified Data, Model & Application Catalog** modeled on New Mexico Water Data: fuzzy search, facets, metadata inspection | Fuse.js |
-| 2 | `poc2-map.html` | **Geospatial & SRF Priority Explorer**: links hydraulic models with >10% water loss and DAC metrics to demonstrate SRF prioritization | Leaflet, Chart.js, OSM / CartoDB / USGS tiles |
+| 2 | `poc2-map.html` | **Geospatial & SRF Priority Explorer**: links hydraulic models with >10% water loss and DAC metrics to demonstrate SRF prioritization | Leaflet, Chart.js, OSM / USGS tiles |
 | 3 | `poc3-assistant.html` | **AI Water & Grant Navigator** (English/Español): BM25/TF-IDF RAG over the shared data, plus optional in-browser WebGPU LLM | Vanilla JS, `@mlc-ai/web-llm` (optional) |
 
 PoC 3 works instantly with deterministic client-side retrieval; enhanced mode (Llama-3.2-1B, q4f16_1) runs locally in the browser and falls back to RAG if WebGPU is unavailable.
@@ -91,5 +91,5 @@ UIUC brand colors and typography (Montserrat, Source Sans 3) with WCAG 2.1 AA ta
 | :-- | :-- | :-- |
 | Hosting | Cloud VMs / PaaS | GitHub Pages ($0) |
 | Search | Managed search service | Fuse.js (client-side) |
-| Maps | Proprietary basemap APIs | Leaflet + OSM/CartoDB/USGS (no keys) |
+| Maps | Proprietary basemap APIs | Leaflet + OSM/USGS (no keys) |
 | AI | Paid LLM API | Local RAG / WebLLM in-browser |
