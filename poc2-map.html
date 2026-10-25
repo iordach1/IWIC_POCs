@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IWIC PoC 2 · Geospatial &amp; Priority Explorer</title>
+  <meta name="description" content="Interactive map of synthetic hydraulic models and Illinois public water systems with SRF equity prioritization.">
+  <link rel="stylesheet" href="css/illinois-brand.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    .app { display: grid; grid-template-columns: 360px 1fr; grid-template-rows: auto 1fr; height: calc(100vh - 160px); min-height: 640px; }
+    .app[data-collapsed="true"] { grid-template-columns: 0 1fr; }
+    .scenario-bar { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; padding: .6rem 1rem; background: var(--il-blue); }
+    .scenario-bar .btn { background: transparent; border-color: var(--il-white); font-size: .9rem; padding: .5rem .9rem; text-align: left; }
+    .scenario-bar .btn[aria-pressed="true"] { background: var(--il-white); color: var(--il-blue); }
+    .scenario-bar .btn:not([aria-pressed="true"]):hover { background: rgba(255,255,255,.15); }
+    .scenario-bar .spacer { flex: 1; }
+    .panel { background: var(--il-storm-bg); border-right: 1px solid var(--il-storm-light); overflow-y: auto; padding: 1rem; min-width: 0; }
+    .app[data-collapsed="true"] .panel { display: none; }
+    .panel h2 { font-size: 1.1rem; margin-bottom: .4rem; }
+    .panel h3 { font-size: .95rem; margin: 1rem 0 .4rem; }
+    .panel label { display: block; font-weight: 600; margin: .5rem 0 .2rem; }
+    .panel select, .panel input[type="search"] { width: 100%; font: 400 1rem var(--font-body); padding: .4rem; border: 1px solid var(--il-storm); border-radius: var(--radius); }
+    .panel input[type="range"] { width: 100%; }
+    .panel .val { float: right; color: var(--il-blue); font-weight: 700; }
+    .legend { list-style: none; margin: .4rem 0; padding: 0; font-size: .92rem; }
+    .legend li { display: flex; align-items: center; gap: .5rem; padding: .1rem 0; }
+    .swatch { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--il-blue); flex: none; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .stat { background: var(--il-white); border-left: 4px solid var(--il-industrial); padding: .4rem .6rem; border-radius: var(--radius); }
+    .stat strong { display: block; font: 800 1.2rem var(--font-head); color: var(--il-blue); }
+    .stat span { font-size: .8rem; color: #595c5b; }
+    table.rank { width: 100%; border-collapse: collapse; font-size: .85rem; background: var(--il-white); }
+    table.rank th, table.rank td { padding: .3rem .4rem; border-bottom: 1px solid var(--il-storm-light); text-align: left; }
+    table.rank th { background: var(--il-blue); color: var(--il-white); font-weight: 600; }
+    table.rank td.n { text-align: right; }
+    table.rank tbody tr { cursor: pointer; }
+    table.rank tbody tr:hover, table.rank tbody tr:focus { background: var(--il-industrial-bg); }
+    .map-wrap { display: grid; grid-template-rows: 1fr auto; min-width: 0; min-height: 0; position: relative; }
+    #map { width: 100%; height: 100%; min-height: 360px; }
+    .toggle-panel { position: absolute; z-index: 1000; top: 10px; left: 56px; }
+    .toggle-panel button { font: 700 .85rem var(--font-body); padding: .4rem .7rem; background: var(--il-white); color: var(--il-blue); border: 2px solid var(--il-blue); border-radius: var(--radius); cursor: pointer; }
+    .drawer { background: var(--il-white); border-top: 4px solid var(--il-orange); padding: .6rem 1rem; max-height: 42vh; overflow-y: auto; }
+    .drawer[data-open="false"] .drawer-body { display: none; }
+    .drawer-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .drawer-head h2 { font-size: 1.05rem; margin: 0; }
+    .drawer-head button { font: 700 .85rem var(--font-body); padding: .3rem .7rem; background: var(--il-blue); color: var(--il-white); border: 0; border-radius: var(--radius); cursor: pointer; }
+    .drawer-body { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(280px, 1.4fr); gap: 1rem; margin-top: .6rem; }
+    .chart-box { position: relative; height: 220px; }
+    .meta-grid { display: grid; grid-template-columns: max-content 1fr; gap: .2rem .9rem; margin: 0; font-size: .92rem; }
+    .meta-grid dt { font-weight: 700; color: var(--il-blue); }
+    .meta-grid dd { margin: 0; }
+    .badge-status { display: inline-block; padding: .05rem .5rem; border-radius: 999px; font-weight: 700; font-size: .8rem; background: var(--il-storm-bg); border: 1px solid var(--il-storm); }
+    .note { font-size: .85rem; color: #595c5b; }
+    .leaflet-popup-content h3 { font-size: 1rem; margin: 0 0 .3rem; }
+    .leaflet-container a { color: var(--il-altgeld); }
+    .hidden { display: none !important; }
+    @media (max-width: 900px) {
+      .app { grid-template-columns: 1fr; grid-template-rows: auto auto 70vh; height: auto; }
+      .app[data-collapsed="true"] { grid-template-columns: 1fr; }
+      .panel { max-height: 60vh; }
+      .drawer-body { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="app" id="app" data-collapsed="false">
+      <div class="scenario-bar" role="group" aria-label="Workshop scenario presets">
+        <button type="button" class="btn" id="sc-a" aria-pressed="true">Scenario A: Multi-Agency Hydraulic Model &amp; Floodplain Finder</button>
+        <button type="button" class="btn" id="sc-b" aria-pressed="false">Scenario B: Lake Michigan Water Loss (&gt;10%) &amp; SRF Equity Prioritization</button>
+      </div>
+
+      <aside class="panel" id="panel" aria-label="Controls and analytics">
+        <p class="note" id="scenario-desc"></p>
+
+        <section id="ctl-a" aria-labelledby="ctl-a-h">
+          <h2 id="ctl-a-h">Model finder</h2>
+          <label for="f-software">Model software</label>
+          <select id="f-software">
+            <option value="all">All models</option>
+            <option value="HEC-RAS 2D">HEC-RAS 2D</option>
+            <option value="HEC-RAS">HEC-RAS (1D)</option>
+            <option value="HEC-HMS/ResSim">HEC-HMS / HEC-ResSim</option>
+            <option value="MODFLOW">MODFLOW</option>
+            <option value="LOMR">LOMR</option>
+          </select>
+          <label for="f-search">Find by name, waterway or county</label>
+          <input type="search" id="f-search" placeholder="e.g. Fox River">
+          <h3>Holding agency</h3>
+          <ul class="legend" id="legend-a"></ul>
+          <div class="stats" id="stats-a"></div>
+          <p class="note">Tip: select “Fox River at Millhurst Dam” to see every model near the replacement bridge site.</p>
+        </section>
+
+        <section id="ctl-b" class="hidden" aria-labelledby="ctl-b-h">
+          <h2 id="ctl-b-h">SRF Prioritization Weighting Sliders</h2>
+          <label for="w-loss">Water Loss % <span class="val" id="v-loss"></span></label>
+          <input type="range" id="w-loss" min="0" max="100" step="5" value="40">
+          <label for="w-dac">Disadvantaged Community Status <span class="val" id="v-dac"></span></label>
+          <input type="range" id="w-dac" min="0" max="100" step="5" value="35">
+          <label for="w-lead">Estimated Lead Service Lines <span class="val" id="v-lead"></span></label>
+          <input type="range" id="w-lead" min="0" max="100" step="5" value="25">
+          <button type="button" class="btn btn--secondary" id="w-reset" style="margin-top:.6rem;padding:.4rem .8rem;border-color:var(--il-blue)">Reset weights</button>
+          <h3>Map legend</h3>
+          <ul class="legend">
+            <li><span class="swatch" style="background:var(--il-altgeld)"></span>DAC with &gt;10% loss (High Priority SRF)</li>
+            <li><span class="swatch" style="background:var(--il-harvest)"></span>&gt;10% loss (Non-DAC)</li>
+            <li><span class="swatch" style="background:var(--il-prairie)"></span>Compliant (&lt;10% loss)</li>
+          </ul>
+          <p class="note">Circle size reflects population served.</p>
+          <div class="stats" id="stats-b"></div>
+          <h3>Ranked municipalities</h3>
+          <table class="rank" id="rank">
+            <caption class="sr-only" style="position:absolute;left:-9999px">Municipalities ranked by SRF priority score</caption>
+            <thead><tr><th scope="col">#</th><th scope="col">Municipality</th><th scope="col">Loss</th><th scope="col">Score</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </aside>
+
+      <div class="map-wrap">
+        <div class="toggle-panel"><button type="button" id="toggle-panel" aria-expanded="true" aria-controls="panel">Hide panel</button></div>
+        <div id="map" role="region" aria-label="Interactive map of Illinois"></div>
+        <section class="drawer" id="drawer" data-open="true" aria-labelledby="drawer-title" aria-live="polite">
+          <div class="drawer-head">
+            <h2 id="drawer-title">Details &amp; analytics</h2>
+            <button type="button" id="drawer-toggle" aria-expanded="true">Collapse</button>
+          </div>
+          <div class="drawer-body">
+            <div id="detail"><p class="note">Select a map feature to see its details.</p></div>
+            <div>
+              <div class="chart-box"><canvas id="chart-detail" role="img" aria-label="Selected feature chart"></canvas></div>
+            </div>
+            <div class="chart-box hidden" id="box-b" style="grid-column:1/-1;height:240px"><canvas id="chart-srf" role="img" aria-label="Water loss versus SRF priority score by municipality"></canvas></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script type="module" src="js/poc2-map.js"></script>
+</body>
+</html>
