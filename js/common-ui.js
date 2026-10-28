@@ -31,6 +31,12 @@ export const I18N = {
     'section.funding': 'Funding Programs',
     'section.about': 'About IWIC',
     'section.partners': 'Task Force Partners',
+    'feedback.btn': 'Give Feedback',
+    'feedback.title': 'Share your feedback',
+    'feedback.intro': 'Tell us what works, what does not, and what you would like to see in this prototype.',
+    'feedback.newtab': 'Open form in a new tab',
+    'feedback.close': 'Close feedback form',
+    'feedback.frame': 'IWIC feedback form',
     'footer.mission': 'Mission',
     'footer.mission.body': 'As the land-grant university of Illinois, the University of Illinois Urbana-Champaign and its Prairie Research Institute advance the public good through research, teaching, and service, including science-based stewardship of the state\u2019s water resources.',
     'footer.partners': 'State Water Plan Task Force Partners',
@@ -96,6 +102,12 @@ export const I18N = {
     'section.funding': 'Programas de financiamiento',
     'section.about': 'Acerca de IWIC',
     'section.partners': 'Socios del Grupo de Trabajo',
+    'feedback.btn': 'Enviar comentarios',
+    'feedback.title': 'Comparta sus comentarios',
+    'feedback.intro': 'Cuéntenos qué funciona, qué no y qué le gustaría ver en este prototipo.',
+    'feedback.newtab': 'Abrir el formulario en una pestaña nueva',
+    'feedback.close': 'Cerrar el formulario de comentarios',
+    'feedback.frame': 'Formulario de comentarios de IWIC',
     'footer.mission': 'Misión',
     'footer.mission.body': 'Como universidad de concesión de tierras de Illinois, la Universidad de Illinois en Urbana-Champaign y su Instituto de Investigación Prairie promueven el bien público mediante la investigación, la enseñanza y el servicio, incluida la gestión científica de los recursos hídricos del estado.',
     'footer.partners': 'Socios del Grupo de Trabajo del Plan Estatal del Agua',
@@ -166,6 +178,7 @@ export function t(key, lang = getLang()) {
 export function applyTranslations(root = document, lang = getLang()) {
   root.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n, lang); });
   root.querySelectorAll('[data-i18n-html]').forEach((el) => { el.innerHTML = t(el.dataset.i18nHtml, lang); });
+  root.querySelectorAll('[data-i18n-title]').forEach((el) => { el.setAttribute('title', t(el.dataset.i18nTitle, lang)); });
   root.querySelectorAll('[data-i18n-aria]').forEach((el) => { el.setAttribute('aria-label', t(el.dataset.i18nAria, lang)); });
   document.documentElement.lang = lang;
 }
@@ -224,6 +237,39 @@ function headerHTML(activePage) {
 </div>`;
 }
 
+const FEEDBACK_URL = 'https://form.jotform.com/263005389344155';
+
+function feedbackHTML() {
+  return `
+<section id="feedback" class="feedback-section" aria-labelledby="feedback-title" hidden>
+  <div class="container">
+    <h2 id="feedback-title" data-i18n="feedback.title"></h2>
+    <p data-i18n="feedback.intro"></p>
+    <p><a href="${FEEDBACK_URL}" target="_blank" rel="noopener" data-i18n="feedback.newtab"></a></p>
+    <iframe class="feedback-frame" src="about:blank" data-src="${FEEDBACK_URL}" data-i18n-title="feedback.frame" title="" loading="lazy"></iframe>
+    <button type="button" class="feedback-close" data-i18n="feedback.close"></button>
+  </div>
+</section>
+<button type="button" class="feedback-fab" aria-controls="feedback" aria-expanded="false" data-i18n="feedback.btn"></button>`;
+}
+
+function wireFeedback() {
+  const fab = document.querySelector('.feedback-fab');
+  const sec = document.getElementById('feedback');
+  const frame = sec.querySelector('iframe');
+  const close = () => { sec.hidden = true; fab.setAttribute('aria-expanded', 'false'); fab.focus(); };
+  fab.addEventListener('click', () => {
+    if (!sec.hidden) return close();
+    if (frame.src === 'about:blank' || !frame.dataset.loaded) { frame.src = frame.dataset.src; frame.dataset.loaded = '1'; }
+    sec.hidden = false;
+    fab.setAttribute('aria-expanded', 'true');
+    sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    sec.querySelector('h2').setAttribute('tabindex', '-1');
+    sec.querySelector('h2').focus({ preventScroll: true });
+  });
+  sec.querySelector('.feedback-close').addEventListener('click', close);
+}
+
 function footerHTML() {
   const partners = PARTNERS.map(([n, u]) => `<li><a href="${u}" rel="noopener">${n}</a></li>`).join('');
   return `
@@ -245,7 +291,9 @@ function footerHTML() {
  */
 export function initIWICLayout(activePage = 'home') {
   document.body.insertAdjacentHTML('afterbegin', headerHTML(activePage));
+  document.body.insertAdjacentHTML('beforeend', feedbackHTML());
   document.body.insertAdjacentHTML('beforeend', footerHTML());
+  wireFeedback();
   const main = document.querySelector('main');
   if (main && !main.id) main.id = 'main';
 
