@@ -198,6 +198,16 @@ tbody tr:hover { background: var(--il-industrial-bg); }
 .footer-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .colophon { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.25); font-size: .9rem; color: #DCDCE6; }
 
+.feedback-fab { position: fixed; right: 1rem; bottom: 1rem; z-index: 50; background: var(--il-blue); color: var(--il-white); border: 2px solid var(--il-orange); border-radius: 999px; padding: .7rem 1.2rem; font: 600 1rem 'Montserrat', sans-serif; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+.feedback-fab:hover { background: var(--il-blue-darker); }
+.feedback-fab:focus-visible, .feedback-close:focus-visible { outline: 3px solid var(--il-industrial); outline-offset: 2px; }
+.feedback-section { background: var(--il-storm-bg); border-top: 4px solid var(--il-orange); padding: 2rem 0; }
+.feedback-section[hidden] { display: none; }
+.feedback-section h2 { color: var(--il-blue); }
+.feedback-section a { color: var(--il-altgeld); }
+.feedback-frame { width: 100%; height: 800px; border: 1px solid var(--il-storm-light); background: var(--il-white); }
+.feedback-close { margin-top: 1rem; background: var(--il-blue); color: var(--il-white); border: 0; padding: .6rem 1rem; font: 600 1rem 'Source Sans 3', sans-serif; cursor: pointer; }
+
 @media (max-width: 700px) {
   .main-nav ul { flex-direction: column; width: 100%; }
   .main-nav a { border-bottom: 0; border-left: 4px solid transparent; }
